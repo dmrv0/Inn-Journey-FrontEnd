@@ -1,0 +1,317 @@
+.section__container {
+    padding: 20px;
+  }
+  
+  .popular__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .popular__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .popular__card {
+    width: calc(33.333% - 20px); /* Üç kartı yan yana göstermek için */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .popular__card img {
+    width: 100%;
+    height: 200px; /* Sabit yükseklik */
+    object-fit: cover;
+    display: block;
+  }
+  
+  .popular__content {
+    padding: 15px;
+    flex: 1;
+  }
+  
+  .popular__card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .star-rating {
+    color: #f39c12; /* Yıldız rengini ayarlayın */
+  }
+  
+  .details-btn {
+    margin-top: auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .details-btn:hover {
+    background-color: #0056b3;
+  }
+  
+
+
+  // PAGİNATION CSS
+
+  /* Pagination için genel ayarlar */
+nav {
+    display: flex;
+    justify-content: center; /* Üst düzey container'ı ortalar */
+    margin-top: 2rem; /* Üstten boşluk */
+  }
+  
+  .pagination-container {
+    display: flex;
+    justify-content: center; /* Listeyi ortalar */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .page-item {
+    margin: 0 0.25rem; /* Her bir sayfa öğesi arasına boşluk ekler */
+  }
+  
+  .page-link {
+    display: block;
+    padding: 0.5rem 1rem; /* Buton içi boşluk */
+    text-decoration: none;
+    color: #007bff; /* Buton yazı rengi */
+    border: 1px solid #dee2e6; /* Kenarlık */
+    border-radius: 0.25rem; /* Kenarları yuvarlatma */
+    background-color: #fff; /* Arka plan rengi */
+  }
+  
+  .page-item.disabled .page-link {
+    color: #6c757d; /* Devre dışı buton rengi */
+  }
+  
+  .page-item.active .page-link {
+    background-color: #007bff; /* Aktif sayfa arka plan rengi */
+    color: #fff; /* Aktif sayfa yazı rengi */
+  }
+  
+  .page-link:hover {
+    background-color: #e9ecef; /* Hover durumu arka plan rengi */
+  }
+  
+
+  //searchbar
+
+  .search-form-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-form-shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-form-field.custom-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .mat-form-field.custom-form-field .mat-form-field-label {
+    color: #007bff;
+  }
+  
+  .mat-form-field.custom-form-field .mat-form-field-outline {
+    border-color: #007bff;
+  }
+  
+  .mat-form-field.custom-form-field .mat-form-field-outline .mat-form-field-outline-start {
+    border-color: #007bff;
+  }
+  
+  .mat-form-field.custom-form-field .mat-form-field-outline .mat-form-field-outline-end {
+    border-color: #007bff;
+  }
+  
+  .mat-form-field.custom-form-field .mat-form-field-underline {
+    background-color: #007bff;
+  }
+  
+  .mat-select.custom-select .mat-select-trigger {
+    font-size: 16px;
+  }
+  
+  .btn-search {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .btn-search:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-search:focus {
+    outline: none;
+  }
+  
+  .btn-toggle-menu {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-toggle-menu:hover {
+    background-color: #0056b3;
+  }
+  
+  .toggle-icon {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  
+  .d-none {
+    display: none;
+  }
+
+
+
+  //üst taraf
+
+  .giris-container {
+    
+    flex-wrap: wrap; /* İçeriklerin ekran genişliğine göre taşmasını sağlar */
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #5755FE;
+    border-radius: 10px;
+  }
+  
+  .description {
+    flex: 1;
+    padding: 20px;
+    color: white;
+  }
+  
+  .description h2 {
+    font-size: 24px;
+  }
+  
+  .description p {
+    font-size: 16px;
+    color: white; /* `whit` yerine `white` */
+    margin-top: 10px;
+  }
+  
+  .features {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap; /* Özellik kutularının ekran boyutuna göre taşmasını sağlar */
+    justify-content: space-between;
+  }
+  
+  .feature-box {
+    background-color: #3e3cb1;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 30%; /* Üç sütun düzeni için */
+  }
+  
+  .feature-box i {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .feature-box h3 {
+    font-size: 16px;
+  }
+  
+  /* Responsive Düzenleme */
+  @media (max-width: 992px) {
+    .feature-box {
+      width: 45%; /* Orta büyüklükte ekranlarda iki sütun düzeni */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .feature-box {
+      width: 100%; /* Küçük ekranlarda tek sütun düzeni */
+      margin-bottom: 20px; /* Kutular arasındaki dikey boşluk */
+    }
+  
+    .description h2 {
+      font-size: 20px; /* Başlık boyutunu küçültür */
+    }
+  
+    .description p {
+      font-size: 14px; /* Paragraf boyutunu küçültür */
+    }
+  
+    .feature-box i {
+      font-size: 24px; /* İkon boyutunu küçültür */
+    }
+  
+    .feature-box h3 {
+      font-size: 14px; /* Başlık boyutunu küçültür */
+    }
+  }
+  //view  
+
+  .icon-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+  }
+  
+  .icon-button img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .icon-button.selected {
+    background-color: #007bff; /* Seçili butonun arka plan rengi */
+    border-radius: 4px;
+    padding: 8px; /* Arka plan rengi görünmesini sağlamak için biraz padding */
+  }
+  
+  .icon-button.selected img {
+    filter: brightness(0) invert(1); /* İkonun rengini değiştirmek için */
+  }
+  
+
+  // Yatay tasarım
+
+  

@@ -1,0 +1,125 @@
+.section__container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.section__header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.popular__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.popular__card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.room_img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.popular__content {
+  padding: 15px;
+}
+
+.room-title h3 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.room-features {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.room-features li {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.room-features img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.refund-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.refund-info button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.refund-info button .icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+}
+
+.refund-deadline {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.price {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.reservation-btn {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.alert {
+  padding: 15px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+}

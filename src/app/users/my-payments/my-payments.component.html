@@ -1,0 +1,30 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-md-12">
+      <app-sidebar id="sidebar"></app-sidebar>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4" *ngFor="let item of paymentModel">
+            <div class="card payment-card mb-3 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">{{getHotelName(item.hotelId)}}</h5>
+                <p class="card-text"><strong>Tutar:</strong> {{item.amount}} ₺</p>
+                <p class="card-text"><strong>Ödeme Yöntemi:</strong> {{item.paymentMethod}}</p>
+                <p [ngClass]="{'text-success': item.status === 'success', 'text-danger': item.status === 'failure'}">
+                  <strong>Durum:</strong> {{item.status === 'success' ? 'Başarılı ✅' : 'Başarısız ❌'}}
+                </p>
+                <p class="card-text"><strong>Tarih:</strong> {{item.date | date: 'mediumDate'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div *ngIf="myHotel.length > 0; else no_hotel " class="alert alert-info">{{ myHotel.length }} adet oteliniz mevcut.</div>
+<ng-template #no_hotel>
+  <div class="alert alert-warning">Mevcut oteliniz bulunamadı</div>
+</ng-template>
+
+<div class="row">
+    <div *ngFor="let item of myHotel; let i = index" class="col-md-6">
+      <div class="card mb-4" >
+       
+        <img 
+        [src]="item.imageUrl || 'https://w7.pngwing.com/pngs/948/610/png-transparent-white-and-brown-hotel-building-illustration-hotel-manager-child-apps-hotel-illustration-hotels-lights-text-cloud-thumbnail.png'"
+        (error)="onImageError($event)"
+        class="card-img-top"
+      />
+        
+        <div class="card-body">
+          
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.description == null ? "Boş" : item.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{item.email == null ? "Boş" : item.email}}</li>
+          <li class="list-group-item">{{item.phone == null ? "Boş" : item.phone}}</li>
+          <li class="list-group-item">{{item.star == null ? "Boş" : item.star}}</li>
+          <li class="list-group-item">{{item.starRating == null || item.starRating==0 ? "Daha önce yorum yapılmamış" : item.starRating}}</li>
+          <li class="list-group-item">{{item.address == null ? "Boş" : item.address}}</li>
+        </ul>
+        <div class="card-body">
+          <a routerLink="Rezervations/{{item.id}}" class="btn btn-primary">Rezervasyonlar</a>
+          <a (click)="openExtensionsDialog(item.id)" class="btn btn-success">Eklentileri Göster ve Düzenle</a>
+          <a (click)="openDialog(item.id)" class="btn btn-primary">Otel Bilgilerini düzenle</a>
+        </div>
+      </div>
+    </div>
+  </div>

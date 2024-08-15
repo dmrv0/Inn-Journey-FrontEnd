@@ -1,0 +1,36 @@
+/* grid.component.css */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 sütun */
+    grid-template-rows: repeat(2, 1fr); /* 2 satır */
+    gap: 10px; /* Hücreler arasındaki boşluk */
+    width: 100%; /* Container genişliği */
+    height: 60vh; /* Container yüksekliği */
+    margin: 0 auto; /* Ortalamak için */
+    padding: 10px; /* İçeriden boşluk */
+    background-color: #f8f9fa; /* Arka plan rengi */
+    border: 2px solid #ddd; /* Kenar çizgisi */
+    border-radius: 10px; /* Köşe yuvarlaklığı */
+  }
+  
+  /* Dikdörtgen butonlar */
+  .rect-button {
+    color: white; /* Yazı rengi */
+    border: none; /* Kenarlık yok */
+    padding: 0; /* İç boşluk yok */
+    font-size: 25px; /* Font boyutu */
+    border-radius: 5px; /* Köşe yuvarlaklığı */
+    cursor: pointer; /* Fare üzerine geldiğinde el simgesi */
+    transition: background-color 0.3s; /* Renk geçişi */
+    width: 100%; /* Buton genişliğini hücre genişliğine uyar */
+    height: 100%; /* Buton yüksekliğini hücre yüksekliğine uyar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Buton üzerine gelindiğinde renk değişimi */
+  .rect-button:hover {
+    opacity: 0.8; /* Hover rengi yerine opaklık değişimi */
+  }
+  

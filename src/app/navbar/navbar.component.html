@@ -1,0 +1,61 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="d-flex justify-content-between w-100">
+      <!-- Left elements -->
+      <div class="d-flex align-items-center">
+        <!-- Brand -->
+        <a class="navbar-brand me-2 d-flex align-items-center" routerLink="">
+          <b>INN JOURNEY</b>
+        </a>
+      </div>
+
+      <!-- Center elements -->
+      <div class=" d-md-flex flex-grow-1 justify-content-center">
+        <ul class="navbar-nav flex-row">
+          <li class="nav-item me-3 me-lg-1 active">
+            <a class="nav-link" routerLink="">
+              <span><i class="fas fa-home fa-lg" title="hotel"></i>Anasayfa</span>
+            </a>
+          </li>
+          <li class="nav-item me-3 me-lg-1 active">
+            <a class="nav-link" routerLink="hotels/page/1">
+              <span><i class="fas fa-hotel fa-lg"></i>Rezervasyon</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right elements -->
+      <div class="d-flex align-items-center">
+        <ul class="navbar-nav flex-row">
+          <li class="nav-item me-3 me-lg-1">
+            <button ngClass="center" *ngIf="isLogin" mat-button [matMenuTriggerFor]="menu">
+              <div class="col-auto">
+                <i class="fas fa-user-circle fa-3x text-white"></i>
+              </div>
+            </button>
+            <mat-menu #menu="matMenu">
+              <p>Hoşgeldiniz.. <br>{{userName}}</p>
+              <button *ngIf="isAdmin" routerLink="/hotels/admin" mat-menu-item>Hotel Admin</button>
+              <button routerLink="/myProfile" mat-menu-item>Kullanıcı işlemleri</button>
+              <button (click)="logOut()" mat-menu-item>Çıkış Yap</button>
+            </mat-menu>
+          </li>
+          <li class="nav-item me-3 me-lg-1">
+            <a class="nav-link d-sm-flex align-items-sm-center" routerLink="login" *ngIf="!isLogin">
+              <strong class="d-none d-sm-block ms-1">Giriş Yap</strong>
+              <span class="li-ico"><i class="bi bi-box-arrow-in-right"></i></span>
+            </a>
+          </li>
+          <li class="nav-item me-3 me-lg-1">
+            <a class="nav-link d-sm-flex align-items-sm-center" routerLink="register" *ngIf="!isLogin">
+              <strong class="d-none d-sm-block ms-1">Kayıt Ol</strong>
+              <span class="li-ico"><i class="fas fa-solid fa-user-plus"></i></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

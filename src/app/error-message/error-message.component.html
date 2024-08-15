@@ -1,0 +1,13 @@
+<div *ngIf="control && control.invalid && (control.dirty || control.touched)">
+    <div *ngIf="control.errors?.['required']">{{ getErrorMessage('required') }}</div>
+    <div *ngIf="control.errors?.['username']">{{ getErrorMessage('username') }}</div>
+    <div *ngIf="control.errors?.['name']">{{ getErrorMessage('name') }}</div>
+    <div *ngIf="control.errors?.['email']">{{ getErrorMessage('email') }}</div>
+    <div *ngIf="control.errors?.['age']">{{ getErrorMessage('age') }}</div>
+    <div *ngIf="control.errors?.['phone']">{{ getErrorMessage('phone') }}</div>
+    <div *ngIf="control.errors?.['password']">{{ getErrorMessage('password') }}</div>
+    <div *ngIf="control.errors?.['description']">{{ getErrorMessage('description') }}</div>
+    <div *ngIf="control.errors?.['baseChildPrice']">{{ getErrorMessage('baseChildPrice') }}</div>
+    <div *ngIf="control.errors?.['baseAdultPrice']">{{ getErrorMessage('baseAdultPrice') }}</div>
+  </div>
+  

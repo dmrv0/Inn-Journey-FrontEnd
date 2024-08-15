@@ -1,0 +1,50 @@
+<h3 class="mb-4">Yorumlar</h3>
+
+<!-- Otel Seçim -->
+<div class="mb-4">
+  <label for="hotelSelect" class="form-label">Otel Seçin:</label>
+  <select id="hotelSelect" class="form-select" (change)="onHotelSelect($event)">
+    <option value="" disabled selected>Lütfen Otel Seçiniz</option>
+    <option *ngFor="let hotel of hotelModal" [value]="hotel.id">{{ hotel.name }}</option>
+  </select>
+</div>
+
+<!-- Yorumlar Tablosu -->
+<table *ngIf="reviewModel.length > 0; else noReview" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Kişi ID</th>
+      <th>Oy</th>
+      <th>Yorum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of reviewModel">
+      <td>{{ item.id }}</td>
+      <td>{{ getUserName(item.userId) }}</td>
+      <td>
+        <span class="badge bg-primary">{{ item.rating }}</span>
+      </td>
+      <td>{{ item.comment }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Yorum Yok Mesajı -->
+<ng-template #noReview>
+  <div class="alert alert-warning text-center">
+    <i class="fas fa-exclamation-triangle" style="font-size: 2rem;"></i>
+    <p class="mb-0">Yorum Bulunamadı</p>
+  </div>
+</ng-template>
+
+<div *ngIf="reviewModel && totalCount > rows" class="card flex justify-content-center">
+  <p-paginator 
+      (onPageChange)="onPageChange($event)" 
+      [first]="first" 
+      [rows]="rows" 
+      [totalRecords]="totalCount" 
+      [rowsPerPageOptions]="[10, 20, 30]" />
+</div>
+

@@ -1,0 +1,58 @@
+
+<!-- Ödemeler Tablosu -->
+<div class="container mt-4">
+  <h2>Ödemeler</h2>
+  <ng-template #no_payments>
+    <div class="alert alert-warning text-center">
+      <i class="fas fa-exclamation-triangle" style="font-size: 2rem;"></i>
+      <p class="mb-0">Ödeme Bulunamadı</p>
+    </div>
+  </ng-template>
+
+  <!-- Otel Seçimi -->
+<div class="mb-4">
+  <label for="hotelSelect" class="form-label">Otel Seçin:</label>
+  <select id="hotelSelect" class="form-select" (change)="onHotelSelect($event)">
+    <option value="" disabled selected>Lütfen Otel Seçiniz</option>
+    <option *ngFor="let hotel of myHotel" [value]="hotel.id">{{ hotel.name }}</option>
+  </select>
+</div>
+
+  <table *ngIf="paymentModal && paymentModal.length > 0; else no_payments" class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Rezervasyon ID</th>
+        <th scope="col">Otel Adı</th>
+        <th scope="col">Kullanıcı ID</th>
+        <th scope="col">Ödeme Türü</th>
+        <th scope="col">Ödeme Tarihi</th>
+        <th scope="col">Fiyat (TL)</th>
+        <th scope="col">Durum</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of paymentModal;">
+        <td>{{item.reservationId}}</td>
+        <td>{{item.hotelId}}</td>
+        <td><a class="btn btn-info" (click)="getUser(item.userId)" >{{getUsersName(item.userId)}}</a> </td>
+        <td>{{item.paymentMethod}}</td>
+        <td>{{item.date | date: 'shortDate'}}</td>
+        <td>{{item.amount | number:'1.2-2'}} ₺</td>
+        <td>
+          <span *ngIf="item.status == 'success'" class="badge bg-success">✅ Başarılı</span>
+          <span *ngIf="item.status == 'failure'" class="badge bg-danger">❌ Başarısız</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div *ngIf="paymentModal && totalCount > rows" class="card flex justify-content-center">
+  <p-paginator 
+      (onPageChange)="onPageChange($event)" 
+      [first]="first" 
+      [rows]="rows" 
+      [totalRecords]="totalCount" 
+      [rowsPerPageOptions]="[10, 20, 30]" />
+</div>

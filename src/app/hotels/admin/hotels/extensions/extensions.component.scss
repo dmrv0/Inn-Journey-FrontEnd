@@ -1,0 +1,72 @@
+.dialog-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.dialog-content {
+  padding: 20px;
+}
+
+.example-container {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.example-list {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  background: #f9f9f9;
+  min-height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.example-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  width: 150px;
+  cursor: move;
+  transition: background 0.3s;
+}
+
+.example-box:hover {
+  background: #f0f0f0;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.item-name {
+  font-size: 1rem;
+  color: #333;
+}
+
+.error-message {
+  color: #d9534f;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.cancel-button {
+  color: #f44336;
+}
+
+.update-button {
+  color: #4caf50;
+}

@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="form-container">
+    <form [formGroup]="hotelForm" class="example-form">
+      <input type="hidden" formControlName="userId" [value]="userId">
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Otel Adı</mat-label>
+        <input formControlName="name" matInput placeholder="Örn: Sedna Hotel">
+        <mat-error *ngIf="hotelForm.get('name').invalid && hotelForm.get('name').touched">Otel adı gerekli.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Otel Adresi</mat-label>
+        <input formControlName="address" matInput placeholder="Örn: Uncalı mah. 50001 sk. Konyaaltı/Antalya">
+        <mat-error *ngIf="hotelForm.get('address').invalid && hotelForm.get('address').touched">Otel adresi gerekli.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Numara</mat-label>
+        <input formControlName="phone" matInput placeholder="Örn: 0555 555 55 55">
+        <mat-error *ngIf="hotelForm.get('phone').invalid && hotelForm.get('phone').touched">Numara gerekli.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Email Adresi</mat-label>
+        <input formControlName="email" matInput placeholder="Örn: destek@sednaotel.com">
+        <mat-error *ngIf="hotelForm.get('email').invalid && hotelForm.get('email').touched">
+          Geçerli bir email adresi gerekli.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Açıklama</mat-label>
+        <input formControlName="description" matInput placeholder="Örn: Otelimiz bu civarın en iyisidir.">
+        <mat-error *ngIf="hotelForm.get('description').invalid && hotelForm.get('description').touched">Açıklama gerekli.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Yıldız</mat-label>
+        <input formControlName="star" matInput placeholder="Örn: 5" type="number">
+        <mat-error *ngIf="hotelForm.get('star').invalid && hotelForm.get('star').touched">
+          Yıldız 1 ile 7 arasında olmalıdır.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Standart Oda Fiyatı</mat-label>
+        <input matInput formControlName="standartRoomPrice" placeholder="Standart Oda Fiyatı" type="number">
+        <app-error-message [control]="hotelForm.get('standartRoomPrice')"></app-error-message>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Resim URL</mat-label>
+        <input formControlName="imageUrl" matInput placeholder="Örn: http://resimlinki.com/ornekresim.png">
+        <mat-error *ngIf="hotelForm.get('imageUrl').invalid && hotelForm.get('imageUrl').touched">Resim URL gerekli.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width m-1">
+        <mat-label>Google Map Kodu</mat-label>
+        <input formControlName="googleMap" matInput placeholder="Örn: Uncalı mah. 50001 sk. Konyaaltı/Antalya">
+      </mat-form-field>
+
+      <mat-dialog-actions align="end">
+        <button class="btn btn-outline-primary" (click)="onSubmit()">Ekle</button>
+      </mat-dialog-actions>
+
+      <div>
+        <span *ngIf="!!errorMessage" class="text-danger">{{ errorMessage }}</span>
+      </div>
+    </form>
+  </div>
+
+  <div class="extensions-container">
+    <div cdkDropListGroup>
+      <div class="example-container">
+        <h2>Otel Eklentileri</h2>
+        <div
+          aria-placeholder="Eklemek için sürükle"
+          cdkDropList
+          [cdkDropListData]="myExtensions"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of myExtensions" cdkDrag>
+            <img src="{{item.iconUrl}}" class="img-fluid" alt="icon"> {{item.name}}
+          </div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <h2>Hazır Eklentiler</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="hotelExtensionPanel"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of hotelExtensionPanel" cdkDrag>
+            <img src="{{item.iconUrl}}" class="img-fluid" alt="icon"> {{item.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

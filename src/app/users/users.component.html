@@ -1,0 +1,30 @@
+<div class="container my-3">
+  <!-- Sidebar Menu Component -->
+  <div class="row">
+    <div class="col-md-12">
+      <app-sidebar id="sidebar"></app-sidebar>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Content Area -->
+      <div class="content">
+        <!-- Material Tab Group -->
+        <mat-tab-group>
+          <mat-tab label="Hoşgeldiniz">
+            <div class="container">
+              <p class="text-center mt-2"><b>InnJourney </b> Uygulamasına hoşgeldiniz. Kullanıcı Panelindesiniz.. </p>
+              <div class="logo m-2 text-center">
+                <img class="img-fluid" src="/assets/img/logo.png">
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Rezervasyonlarım">
+            <app-my-reservations></app-my-reservations>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

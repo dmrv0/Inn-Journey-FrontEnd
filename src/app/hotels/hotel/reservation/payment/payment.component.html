@@ -1,0 +1,109 @@
+
+<h2 class="mb-4">Ödeme Sayfası</h2>
+
+<!-- Rezervasyon Bilgileri ve Ödeme Formu -->
+<div *ngIf="successEkrani == false && failrueEkrani == false && loading == false">
+  <form [formGroup]="paymentForm" (ngSubmit)="odemeyap()">
+    <input formControlName="id" type="hidden" class="form-control" readonly>
+    <input formControlName="userId" type="hidden" class="form-control" readonly>
+    <input formControlName="hotelId" type="hidden" class="form-control" readonly>
+    
+    <!-- Oda Bilgileri -->
+    <div class="card mb-4 room-info-card">
+      <div class="card-header">
+        Oda Bilgileri
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <img *ngIf="roomTypeModel" src="{{roomTypeModel.imageUrl}}" alt="Oda Resmi" class="img-fluid rounded">
+            <img *ngIf="!roomTypeModel" src="" alt="Oda Resmi" class="img-fluid rounded">
+          </div>
+          <div class="col-md-8">
+            <h5 class="card-title" *ngIf="hotelModel"> {{hotelModel.name}}</h5>
+            <p *ngIf="roomTypeModel"> <strong>{{roomTypeModel.name}} </strong></p>
+            <p *ngIf="!roomTypeModel"> <strong>Ad bilgisi mevcut değil </strong></p>
+            <p><strong>Giriş Tarihi:</strong> {{ paymentForm.get('checkIn').value | date: 'mediumDate' }}</p>
+            <p><strong>Çıkış Tarihi:</strong> {{ paymentForm.get('checkOut').value | date: 'mediumDate' }}</p>
+            <p><strong>Toplam Fiyat:</strong> {{ paymentForm.get('totalPrice').value }} ₺</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ödeme Bilgileri -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Ödeme Bilgileri
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>Kart Üzerindeki İsim</label>
+          <input formControlName="cardHolderName" type="text" class="form-control" placeholder="Kart Üzerindeki İsim">
+          <app-error-message [control]="paymentForm.get('cardHolderName')"></app-error-message>
+        </div>
+        <div class="form-group">
+          <label>Kart Numarası</label>
+          <input formControlName="cardNumber" type="text" class="form-control" placeholder="Kart Numarası">
+          <app-error-message [control]="paymentForm.get('cardNumber')"></app-error-message>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Son Kullanma Tarihi Ay</label>
+            <input formControlName="expireMonth" type="text" class="form-control" placeholder="MM">
+          </div>
+          <div class="form-group col-md-4">
+            <label>Son Kullanma Tarihi Yıl</label>
+            <input formControlName="expireYear" type="text" class="form-control" placeholder="YY">
+          </div>
+          <div class="form-group col-md-4">
+            <label>CVV</label>
+            <input formControlName="cvc" type="text" class="form-control" placeholder="CVV">
+            <app-error-message [control]="paymentForm.get('cvc')"></app-error-message>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary btn-block">Ödemeyi Tamamla</button>
+  </form>
+</div>
+<!-- Ödeme Başarı Ekranı -->
+<div *ngIf="successEkrani">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <div class="alert alert-success" role="alert">
+          <i class="fas fa-check-circle" style="font-size: 3rem; color: green;"></i>
+          <h4 class="alert-heading">Ödeme başarıyla alındı!</h4>
+          <p>Rezervasyonunuz tamamlandı.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="text-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<!-- Başarısız Ödeme Ekranı -->
+<div *ngIf="failrueEkrani">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <div class="alert alert-danger" role="alert">
+          <i class="fas fa-times-circle" style="font-size: 3rem; color: red;"></i>
+          <h4 class="alert-heading">Ödeme Başarısız!</h4>
+          <p>Bir hata oluştu ve ödemeniz alınamadı. Lütfen tekrar deneyin.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!!errorMessage" class="bg-danger text-white"> {{errorMessage}}</div>
+

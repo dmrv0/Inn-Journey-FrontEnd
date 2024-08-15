@@ -1,0 +1,76 @@
+<form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width m-1">
+        <mat-label>Hotel Id</mat-label>
+        <mat-select formControlName="hotelId" placeholder="Otelinizi seçin..">
+          <mat-option *ngFor="let hotel of myHotels" [value]="hotel.id">
+            {{ hotel.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="roomForm.get('hotelId').hasError('required')">Hotel ID is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width m-1">
+        <mat-label> Oda Tipi</mat-label>
+        <mat-select formControlName="roomTypeId" placeholder="Oda tipini seçin...">
+            <mat-option *ngFor="let odaTipi of roomType" [value]="odaTipi.id">
+                {{odaTipi.name}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="roomForm.get('roomTypeId').hasError('required')"> RoomTypeIs required</mat-error>
+       </mat-form-field>
+
+    <mat-form-field class="example-full-width m-1">
+      <mat-label>Yetkişkin Fiyatı</mat-label>
+      <input matInput formControlName="AdultPrice" placeholder="Yetişkin Fiyatı" type="number">
+      <app-error-message
+      [control]="roomForm.get('adultPrice')">
+    </app-error-message>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width m-1">
+      <mat-label>Çocuk Fiyatı</mat-label>
+      <input matInput formControlName="ChildPrice" placeholder="Çocuk Fiyatı" type="number">
+      <app-error-message
+      [control]="roomForm.get('childPrice')">
+    </app-error-message>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width m-1">
+      <mat-label>Oda Kapasitesi</mat-label>
+      <input matInput formControlName="Capacity" placeholder="Oda Kapasitesi" type="number">
+    </mat-form-field>
+
+
+    <input formControlName="status" type="hidden" value="OK" >
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <mat matError *ngIf="!!errorMessage"> {{errorMessage}}</mat>
+  </form>
+
+<!-- Extensions -->
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>Oda Eklentileri</h2>
+    <div
+      aria-placeholder="Eklemek için sürükle"
+      cdkDropList
+      [cdkDropListData]="myExtensions"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of myExtensions" cdkDrag>
+        <img src="{{item.iconUrl}}" class="img-fluid" alt="icon"> {{item.name}}
+      </div>
+    </div>
+  </div>
+  <div class="example-container">
+    <h2>Hazır Eklentiler</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="roomExtensionPanel"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of roomExtensionPanel" cdkDrag>
+        <img src="{{item.iconUrl}}" class="img-fluid" alt="icon"> {{item.name}}
+      </div>
+    </div>
+  </div>
+</div>

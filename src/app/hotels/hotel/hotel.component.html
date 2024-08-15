@@ -1,0 +1,45 @@
+<div>
+  <div class="">
+    <div *ngIf="hotel" class="main_grid">
+      <div class="main_card">
+        <div class="card-content">
+          <div class="slider-wrapper">
+            <div class="slider" #slider>
+              <img id="slide1" [src]="hotel.imageUrl || 'https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937_1280.jpg'" alt="">
+            </div>
+          </div>
+          <div class="gps-wrapper h-80">
+            <div *ngIf="hotel.googleMap" [innerHTML]="getSafeGoogleMap()"></div>
+            <div *ngIf="!hotel.googleMap">
+              Harita bilgisi girilmedi
+            </div>
+          </div>
+        </div>
+        <div class="hotel-info">
+          <div class="main_card_header">
+            <div class="hotel-title-and-stars">
+              <h2 class="hotel-title">{{hotel.name}}</h2>
+              <div class="star-rating">
+                <span class="icon" *ngFor="let star of getStarArray(hotel.star)">
+                  <i class="bi bi-star-fill"></i>
+                </span>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="hotel-description">
+            <p>{{hotel.description}}</p>
+          </div>
+          <div class="hotel-address">
+            <p><i class="ri-map-pin-line"></i> {{hotel.address}}</p>
+          </div>
+          <!--hotelfeatures-->
+          <app-extensions *ngIf="hotel.id" [hotelId]="hotel.id"></app-extensions>
+        </div>
+      </div>
+    </div>
+    <app-room class="m-1" *ngIf="hotel" [hotelId]="hotel.id"></app-room>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<app-review *ngIf="hotel" [hotelId]="hotel.id"></app-review>

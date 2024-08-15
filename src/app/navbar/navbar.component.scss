@@ -1,0 +1,97 @@
+/* Genel Body Stilleri */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Stilleri */
+.navbar {
+  background-color: #FF71CD; /* Açık mavi arka plan */
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #fff; /* Beyaz logo metni */
+}
+
+.navbar-nav .nav-link {
+  color: #fff; /* Beyaz metin */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f0f8ff; /* Daha açık mavi renk */
+}
+
+.nav-item {
+  margin-left: 15px;
+}
+
+.nav-item .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item .nav-link i {
+  font-size: 1.5em;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+
+  border-radius: 5px;
+}
+
+
+
+/* Stilinizi burada tanımlayın */
+.custom-menu {
+  background-color: #1e2a38;
+  border: 1px solid #2c3e50;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.custom-menu p {
+  color: #ecf0f1;
+}
+
+.custom-menu .mat-menu-item {
+  color: #ecf0f1;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-menu .mat-menu-item:hover {
+  background-color: #34495e;
+  color: #fff;
+}
+
+/* src/styles.scss */
+
+/* src/styles.scss */
+
+/* Mat-MDC Menu Panel Stili */
+::ng-deep .mat-mdc-menu-panel {
+  background-color: #FF71CD !important; /* Açık pembe arka plan */
+  border: 1px solid #FF61B3 !important; /* Biraz daha koyu pembe sınır */
+  border-radius: 8px !important;
+  padding: 10px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Mat-MDC Menu Öğeleri Stili */
+::ng-deep .mat-mdc-menu-item {
+  color: #fff !important; /* Beyaz metin */
+  padding: 10px 20px !important;
+  border-radius: 4px !important;
+  transition: background-color 0.3s, color 0.3s !important;
+}
+
+/* Menü Öğeleri Üzerine Hover Efekti */
+::ng-deep .mat-mdc-menu-item:hover {
+  background-color: #FF61B3 !important; /* Daha koyu pembe hover efekti */
+  color: #fff !important;
+}

@@ -1,0 +1,36 @@
+
+<h2 mat-dialog-title>Hotel Eklentileri</h2>
+<mat-dialog-content class="mat-typography">
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>Hotel Eklentileri</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="myExtensions"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of myExtensions" cdkDrag>
+        <img src="{{item.iconUrl}}" class="img-fluid" alt="icon"> {{item.name}}
+      </div>
+    </div>
+  </div>
+  <div class="example-container">
+    <h2>Hazır Eklentiler</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="hotelExtensionPanel"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of hotelExtensionPanel" cdkDrag>
+        <img src="{{item.iconUrl}}" class="img-fluid" alt="icon"> {{item.name}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="btn btn-danger" *ngIf="!!errorMessage">{{errorMessage}}</div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)=" onSubmit()" mat-button [mat-dialog-close]="true" cdkFocusInitial>Güncelle</button>
+</mat-dialog-actions>

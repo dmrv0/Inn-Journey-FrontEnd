@@ -1,0 +1,37 @@
+<h2 mat-dialog-title class="dialog-title">Oda Eklentileri</h2>
+<mat-dialog-content class="mat-typography dialog-content">
+  <div cdkDropListGroup>
+    <div class="example-container">
+      <h2 class="section-title">Oda Eklentileri</h2>
+      <div
+        cdkDropList
+        [cdkDropListData]="myExtensions"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of myExtensions" cdkDrag>
+          <img src="{{item.iconUrl}}" class="img-fluid icon" alt="icon"> 
+          <span class="item-name">{{item.name}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="error-message" *ngIf="!!errorMessage">{{errorMessage}}</div>
+    <div class="example-container">
+      <h2 class="section-title">Hazır Eklentiler</h2>
+      <div
+        cdkDropList
+        [cdkDropListData]="roomExtensionPanel"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of roomExtensionPanel" cdkDrag>
+          <img src="{{item.iconUrl}}" class="img-fluid icon" alt="icon"> 
+          <span class="item-name">{{item.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="cancel-button">İptal</button>
+  <button (click)="onSubmit()" mat-button [mat-dialog-close]="true" cdkFocusInitial class="update-button">Güncelle</button>
+</mat-dialog-actions>

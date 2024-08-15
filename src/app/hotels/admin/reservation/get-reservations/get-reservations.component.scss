@@ -1,0 +1,48 @@
+/* Genel Tablo Stilleri */
+.table {
+    font-size: 1rem;
+    color: #343a40; /* Metin rengi */
+    background-color: #ffffff; /* Arka plan rengi */
+    border-radius: 0.5rem; /* Köşe yuvarlama */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+  }
+  
+  /* Başlık Stilleri */
+  .table thead {
+    background-color: #f8f9fa; /* Başlık arka plan rengi */
+  }
+  
+  .table thead th {
+    font-weight: bold; /* Başlık font ağırlığını artırır */
+    color: #495057; /* Başlık metin rengi */
+  }
+  
+  /* Satır Hover Efekti */
+  .table tbody tr:hover {
+    background-color: #e9ecef; /* Hover arka plan rengi */
+  }
+  
+  /* Durum Buton Stilleri */
+  .table .status {
+    padding: 0.3rem 0.5rem; /* İçerik ile kenar arasında boşluk */
+    border-radius: 0.25rem; /* Köşe yuvarlama */
+    color: #ffffff; /* Metin rengi */
+  }
+  
+  .status.active {
+    background-color: #28a745; /* Yeşil rengi */
+  }
+  
+  .status.inactive {
+    background-color: #dc3545; /* Kırmızı rengi */
+  }
+  
+  .status.pending {
+    background-color: #ffc107; /* Sarı rengi */
+  }
+  
+  /* Responsive Stiller */
+  .table-responsive {
+    overflow-x: auto; /* Yatay kaydırma sağlar */
+  }
+  

@@ -1,0 +1,10 @@
+<div class="features-grid">
+  <ul *ngIf="extensionsModel" class="features-list">
+    <li *ngFor="let item of extensionsModel" class="feature-item">
+      <div class="feature-content">
+        <img src="{{item.iconUrl}}" class="img img-fluid w-25" alt="Feature icon">
+        <span class="feature-text">{{item.name}}</span>
+      </div>
+    </li>
+  </ul>
+</div>

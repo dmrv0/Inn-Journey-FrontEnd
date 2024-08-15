@@ -1,0 +1,185 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+
+<div class="giris-container m-3">
+  <div class="description">
+    <h2>Mükemmel konaklamanızı bulun ve rezervasyon yapın</h2>
+    <p>Mükemmel konaklamanızı bulun ve rezervasyon yapın.</p>
+  </div>
+  <div class="features">
+    <div class="feature-box">
+      <div class="feature-content">
+        <img src="assets/img/hotels/gift.png" alt="Ödüller">
+        <h3>Konakladığınız her gece için ödüller kazanın</h3>
+      </div>
+    </div>
+    <div class="feature-box">
+      <div class="feature-content">
+        <img src="assets/img/hotels/money.png" alt="Fiyatlar">
+        <h3>Üye Fiyatlarıyla daha fazla kazanç elde edin</h3>
+      </div>
+    </div>
+    <div class="feature-box">
+      <div class="feature-content">
+        <img src="assets/img/hotels/cancelled.png" alt="İptal">
+        <h3>Planların değişmesi durumunda ücretsiz iptal</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 1 -->
+<div class="container">
+  <div class="row justify-content-between align-items-center">
+    <div class="col-auto">
+      <button class="btn-toggle-menu" (click)="toggleMenu()">
+        <span class="toggle-icon">&#x25BC;</span> <!-- Ok işareti -->
+        Filtreleri Göster/Gizle
+      </button>
+    </div>
+
+<div class="col-auto icon-container">
+  <button 
+    class="icon-button" 
+    [ngClass]="{'selected': isSelected('horizontal')}" 
+    (click)="setLayout('horizontal')"
+  >
+    <img src="assets/img/view/viewHorizontal.png" alt="Yatay Görünüm">
+  </button>
+  <button 
+    class="icon-button" 
+    [ngClass]="{'selected': isSelected('vertical')}" 
+    (click)="setLayout('vertical')"
+  >
+    <img src="assets/img/view/viewVertical.png" alt="Dikey Görünüm">
+  </button>
+</div>
+
+
+  </div>
+
+  <div class="col-12" [ngClass]="{'d-none': !isMenuOpen}">
+    <mat-form-field class="w-25 custom-form-field m-1">
+      <input matInput [matDatepickerFilter]="checkInFilter" [matDatepicker]="checkInPicker" placeholder="Check-in Date" (dateChange)="onCheckInDateChange($event)">
+      <mat-datepicker-toggle matSuffix [for]="checkInPicker"></mat-datepicker-toggle>
+      <mat-datepicker #checkInPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-25 custom-form-field m-1">
+      <input matInput [matDatepickerFilter]="checkOutFilter" [matDatepicker]="checkOutPicker" placeholder="Check-out Date" [min]="checkInDate" (dateChange)="onCheckOutDateChange($event)">
+      <mat-datepicker-toggle matSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
+      <mat-datepicker #checkOutPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="custom-form-field m-1">
+      <mat-label>Fiyatına Göre</mat-label>
+      <mat-select class="custom-select" (selectionChange)="fiyatinaGoreSirala($event.value)">
+        <mat-option [value]="null">Normal sırala</mat-option>
+        <mat-option [value]="true">Yüksekten aşağı sırala</mat-option>
+        <mat-option [value]="false">Aşağıdan yukarı sırala</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="custom-form-field">
+      <mat-label>Yıldız sayısı</mat-label>
+      <mat-select class="custom-select" (selectionChange)="onSortOrderChange($event.value)">
+        <mat-option [value]="null">Normal sırala</mat-option>
+        <mat-option [value]="true">Yüksekten aşağı sırala</mat-option>
+        <mat-option [value]="false">Aşağıdan yukarı sırala</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button (click)="tariheGoreGetir()" class="btn-search">Ara</button>
+  </div>
+</div>
+
+<div *ngIf="loading" class="card flex justify-content-center center">
+  <p-progressSpinner 
+      styleClass="w-4rem h-4rem" 
+      fill="var(--surface-ground)" 
+      animationDuration=".5s" />
+</div>
+
+
+<ng-template *ngIf="ListNo == 1 && !loading " [ngTemplateOutlet]="horizontal"></ng-template>
+<ng-template *ngIf="ListNo == 2 && !loading" [ngTemplateOutlet]="vertical"></ng-template>
+
+<ng-template #horizontal>
+  <section class="section__container popular__container">
+    <div class="popular__grid">
+      <div class="popular__card" *ngFor="let item of Filteredhotel; let i = index">
+        <img 
+          [src]="item.imageUrl || 'https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937_1280.jpg'"
+          (error)="onImageError($event)"
+          alt="popular hotel" 
+        />
+        <div class="popular__content">
+          <div class="popular__card__header">
+            <h4>{{item.name}}</h4>
+            <div class="star-rating">
+              <span class="icon" *ngFor="let star of getStarArray(item)">
+                <i class="bi bi-star-fill"></i>
+              </span>
+            </div>
+          </div>
+          <p><i class="ri-map-pin-line"></i>{{item.address}}</p>
+          <p> <i class="bi bi-star-fill"></i>{{item.starRating | number: '1.1-1'}}</p>
+          <p><i class="ri-map-pin-line"></i> <label *ngIf="!maxPrice">Oda Fiyatı:</label> {{item.standartRoomPrice}} ₺ <label *ngIf="maxPrice"> Başlayan fiyatlarla...</label></p>
+          <a class="details-btn" [routerLink]="['/hotels', item.name, 'details', item.id]">Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+
+<ng-template #vertical>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-deck">
+        <div class="card mb-3" *ngFor="let item of Filteredhotel">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img 
+                [src]="item.imageUrl || 'https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937_1280.jpg'"
+                (error)="onImageError($event)"
+                alt="popular hotel" 
+                class="img-thumbnail img-fluid rounded start" />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title">{{item.name}}</h2>
+                <p class="card-text">{{item.description}}</p>
+                <p class="card-text"> <i class="bi bi-star-fill"></i>{{ item.starRating | number: '1.1-1' }}</p>
+                <div class="card-text">
+                  Oda fiyatı <b>{{item.standartRoomPrice}}</b>
+                </div>
+                <div class="card-text">
+                  <div class="star-rating">
+                    <span class="icon" *ngFor="let star of getStarArray(item)">
+                      <i class="bi bi-star-fill"></i>
+                    </span>
+                  </div>
+                </div>
+                <a [routerLink]="['/hotels', item.name, 'details', item.id]" class="btn btn-sm btn-outline-primary">Detaylar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<nav>
+  <ul class="pagination pagination-container mb-5">
+    <li class="page-item disabled">
+      <a class="page-link">{{currentPageNo}}/{{totalPageCount}}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" *ngIf="currentPageNo != 1" [routerLink]="['/hotels/page', currentPageNo - 1 <= 0 ? 1: currentPageNo - 1]">Previous</a>
+    </li>
+    <li class="page-item" *ngFor="let pageNo of pageList" routerLinkActive="active"><a class="page-link" [routerLink]="['/hotels/page', pageNo]">{{pageNo}}</a></li>
+    <li class="page-item">
+      <a class="page-link" *ngIf="currentPageNo != totalPageCount" [routerLink]="['/hotels/page', currentPageNo + 1 >= totalPageCount ? totalPageCount: currentPageNo + 1]">Next</a>
+    </li>
+  </ul>
+</nav>

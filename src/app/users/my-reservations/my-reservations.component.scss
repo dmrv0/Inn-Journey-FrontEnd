@@ -1,0 +1,75 @@
+/* Genel Card Stilleri */
+.reservation-card {
+  border-radius: 0.75rem; /* Köşe yuvarlama */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+  overflow: hidden; /* İçerik taşmasını engeller */
+  transition: transform 0.3s, box-shadow 0.3s; /* Geçiş efektleri */
+}
+
+.reservation-card:hover {
+  transform: translateY(-5px); /* Hover efekti */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Hover gölge efekti */
+}
+
+/* Durum Rozeti Stilleri */
+.status-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  border-bottom-right-radius: 0.5rem; /* Yuvarlatılmış köşeler */
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.status-badge.active {
+  background-color: #28a745; /* Onaylanmış durum rengi */
+  color: #fff; /* Metin rengi beyaz */
+}
+
+.status-badge.inactive {
+  background-color: #dc3545; /* Onaylanmamış durum rengi */
+  color: #fff; /* Metin rengi beyaz */
+}
+
+/* Card Başlık Stilleri */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #343a40; /* Başlık rengi */
+}
+
+/* Buton Stilleri */
+.btn-primary {
+  background-color: #007bff; /* Primary buton rengi */
+  border-color: #007bff; /* Border rengi */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* İptal butonu rengi */
+  border-color: #dc3545; /* Border rengi */
+}
+
+/* Resim Stilleri */
+.img-fluid {
+  object-fit: cover; /* Resmi kapsayıcıya göre kesme */
+  height: 100%; /* Resmi tam yükseklikte yapar */
+}
+
+/* Card İçerik Stilleri */
+.card-body {
+  position: relative; /* Rozet için konum */
+}
+
+/* İptal Durumu */
+.badge-secondary {
+  background-color: #6c757d; /* İptal edilmiş rengi */
+  color: #fff; /* Metin rengi beyaz */
+}
+
+/* Hata Mesajı Stilleri */
+.alert-warning {
+  font-size: 0.875rem; /* Hata mesajı font boyutu */
+}
+

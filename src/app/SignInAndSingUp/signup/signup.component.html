@@ -1,0 +1,102 @@
+<section class="vh-100">
+  <div class="container py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card text-white" style="border-radius: 1rem; background-color: rgb(43, 48, 53);">
+            <div class="card-body p-5 text-center">
+              <div class="mb-md-5 mt-md-4 pb-5">
+                <h2 class="fw-bold mb-2 text-uppercase">Kayıt Ol</h2>
+  
+                <form [formGroup]="signUpForm" (ngSubmit)="submitRegister()">       
+            <div class="row">
+                <div class="col-6">
+                  <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+                    <label for="name" class="form-label">İsim Soyisim*</label>
+                    <input type="text" id="name" formControlName="name" class="form-control form-control-lg" placeholder="İsim Soyisim"/>
+                    <app-error-message [control]="signUpForm.get('name')"></app-error-message>
+                </div>
+              </div>
+  
+              <div class="col-6">
+                <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+                  <label for="userName" class="form-label">Kullanıcı Adı *</label>
+                  <input type="text" id="userName" formControlName="userName" class="form-control form-control-lg" placeholder="Kullanıcı Adı"/>
+                  <app-error-message [control]="signUpForm.get('userName')"></app-error-message>
+                </div>
+              </div>
+            </div>
+                
+            <div class="row">
+              <div class="col-6">
+                <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+                  <label for="email" class="form-label">Email *</label>
+                  <input type="email" id="email" formControlName="email" class="form-control form-control-lg" placeholder="Örn: örn@gmail.com"/>
+                  <app-error-message [control]="signUpForm.get('email')"></app-error-message>
+                </div>
+              </div>
+  
+              <div class="col-6">
+                <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+                  <label for="phone" class="form-label">Telefon Numarası *</label>
+                  <input type="number" onKeyPress="if(this.value.length==10) return false;" inputmode="numeric" id="phone" formControlName="phone" class="form-control form-control-lg" 
+                  placeholder="Örn: 5353553535"/>
+                  <app-error-message [control]="signUpForm.get('phone')"></app-error-message>
+                </div>
+              </div>
+            </div>  
+
+            <div class="row">
+              <div class="col-6">
+                <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+                  <label for="age" class="form-label">Yaş *</label>
+                  <input type="number" maxlength="11" id="age" formControlName="age" class="form-control form-control-lg" placeholder="Yaş"/>
+                  <app-error-message [control]="signUpForm.get('age')"></app-error-message>
+                </div>
+              </div>
+      
+              <div class="col-6">
+                <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+                  <label for="gender" class="form-label">Cinsiyet *</label>
+                  <select id="gender" formControlName="gender" class="form-control form-control-lg">
+                    <option value="false" selected>Erkek</option>
+                    <option value="true">Kadın</option>
+                  </select>
+                  <app-error-message [control]="signUpForm.get('gender')"></app-error-message>
+                </div>
+              </div>
+            </div>    
+  
+            <div class="row">
+              <div class="col-6">
+                <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+                  <label for="password" class="form-label">Yeni Şifre *</label>
+                  <input type="password" id="password" formControlName="password" class="form-control form-control-lg" placeholder="Yeni Şifre"/>
+                  <div class="form-text form-text-color" *ngIf="signUpForm.hasError('notSame')">Passwords don't match.</div>
+                  <app-error-message [control]="signUpForm.get('password')"></app-error-message>
+                </div>
+              </div>
+  
+              <div class="col-6">
+                <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+                  <label for="confirmPassword" class="form-label">Yeni Şifre Tekrarı *</label>
+                  <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control form-control-lg" placeholder="Yeni Şifre Tekrarı"/>
+                  <app-error-message [control]="signUpForm.get('confirmPassword')"></app-error-message>
+                </div>
+              </div>
+            </div>
+  
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Kayıt Ol</button>
+                </form>
+  <div *ngIf="!!errorMessage" class="bg-danger">
+{{errorMessage}}
+  </div>
+              </div>
+              <div>
+                <p class="mb-0">Zaten hesabın var mı? <a routerLink="../login" class="text-white-50 fw-bold">Giriş Yap</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,33 @@
+.dialog-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .user-details {
+    font-size: 16px;
+  }
+  
+  .user-details h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .user-details p {
+    margin: 4px 0;
+  }
+  

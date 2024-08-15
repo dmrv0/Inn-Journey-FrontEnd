@@ -1,0 +1,15 @@
+<mat-dialog-content class="mat-typography dialog-content">
+    <div class="user-profile">
+      <img src="https://via.placeholder.com/100" alt="Profil Resmi" class="profile-img"/>
+      <div *ngIf="userModal" class="user-details">
+        <h2>{{userModal.name}}</h2>
+        <p>Email: {{userModal.email}}</p>
+        <p>Age: {{userModal.age}}</p>
+        <p>Username: {{userModal.userName}}</p>
+        <p *ngIf="!userModal.gender">Gender: Erkek</p>
+        <p *ngIf="userModal.gender">Gender: Kadın</p>
+        <p>Phone: {{userModal.phone}}</p>
+      </div>
+    </div>
+  </mat-dialog-content>
+  

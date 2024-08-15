@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-deck">
+        <div class="card mb-3 reservation-card" *ngFor="let item of myReservation">
+          <div class="status-badge" [ngClass]="getStatusClass(item.status)">
+            <span *ngIf="item.status == 'PC'">Rezervasyon Onaylandı</span>
+            <span *ngIf="item.status == 'PNC'">Rezervasyon Onaylanmadı</span>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="https://cdn.tatilsepeti.com/Files/Images/Tesis/00283/1050X700/tsr00283637151188534263780.jpg" alt="Hotel Image" class="img-fluid rounded-start">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title">{{ getHotelName(item.hotelId) }}</h3>
+                <div class="card-text mb-2">
+                  <b>Giriş Tarihi:</b> {{ item.checkIn | date: "mediumDate" }}<br>
+                  <b>Çıkış Tarihi:</b> {{ item.checkOut | date: "mediumDate" }}
+                </div>
+                <div class="card-text mb-3">
+                  <label><b>Toplam Ücret:</b> {{ item.totalPrice }} ₺</label>
+                </div>
+                <!-- <a routerLink="" class="btn btn-primary w-100 mb-2">Rezervasyon Detayları</a> -->
+                <!-- İptal Et Butonu -->
+                <p-button *ngIf="!item.deleted" (onClick)="confirm2($event, item)" label="İptal Et" severity="danger" [outlined]="true" />
+                <div *ngIf="item.deleted" class="badge badge-secondary w-100">İptal Edilmiş</div>
+                <div *ngIf="!!errorMessage" class="alert alert-warning mt-2">{{ errorMessage }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="onPageChange($event)">
+</mat-paginator>
+<p-confirmDialog></p-confirmDialog>
+

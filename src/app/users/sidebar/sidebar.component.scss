@@ -1,0 +1,62 @@
+/* Sidebar tasarımı */
+#sidebar {
+  background-color: #343a40; /* Koyu gri arka plan rengi */
+  color: #fff; /* Yazı rengi beyaz */
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* Altında ince bir çizgi */
+}
+
+#sidebar ul {
+  list-style-type: none; /* Liste noktalarını kaldırır */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Menü öğelerini yatayda hizala */
+  justify-content: space-around; /* Öğeleri eşit aralıklı yerleştir */
+}
+
+#sidebar li {
+  margin: 0; /* Kenar boşluklarını kaldırır */
+}
+
+#sidebar a {
+  color: #fff; /* Bağlantı rengi beyaz */
+  text-decoration: none; /* Alt çizgiyi kaldırır */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+#sidebar a:hover {
+  background-color: #495057; /* Üzerine gelindiğinde arka plan rengini değiştir */
+  border-radius: 5px; /* Köşeleri yuvarlatır */
+}
+
+#sidebar i {
+  margin-right: 8px; /* Simge ile metin arasında boşluk bırakır */
+}
+
+#sidebar span {
+  font-size: 14px; /* Metin boyutunu ayarla */
+}
+
+/* Mobil ekranlar için */
+@media screen and (max-width: 768px) {
+  #sidebar ul {
+    flex-direction: column; /* Menü öğelerini dikeyde hizala */
+    align-items: flex-start; /* Öğeleri sola hizala */
+  }
+
+  #sidebar a {
+    padding: 10px 20px; /* Daha fazla iç boşluk ekle */
+  }
+}
+
+.nav-links li.active a {
+  background-color: #FF71CD; /* Aktif menü öğesi arka plan rengi */
+  color: #fff; /* Aktif menü öğesi metin rengi */
+  border-radius: 4px; /* Köşeleri yuvarlat */
+}
+
+.nav-links li.active a i {
+  color: #fff; /* Aktif menü öğesi simge rengi */
+}

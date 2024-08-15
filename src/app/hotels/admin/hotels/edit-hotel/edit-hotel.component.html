@@ -1,0 +1,55 @@
+      <h2 mat-dialog-title>Oteli Düzenle</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="hotelForm" class="example-form">
+
+        <input type="hidden" formControlName="id" placeholder="Ex. Pizza">
+        <mat-form-field class="example-full-width m-1">
+        <mat-label>Otel Adı</mat-label>   
+          <input  formControlName="name" matInput placeholder="Ex. Pizza">
+        </mat-form-field>
+        <app-error-message [control]="hotelForm.get('name')"></app-error-message>
+
+        <mat-form-field class="example-full-width m-1">
+            <mat-label>Otel Adresi</mat-label>
+            <input  formControlName="address" matInput placeholder="Ex. Pizza">
+          </mat-form-field>
+
+          <app-error-message [control]="hotelForm.get('address')"></app-error-message>
+          <mat-form-field class="example-full-width m-1">
+            <mat-label>Numara</mat-label>
+            <input  formControlName="phone" matInput placeholder="Ex. Pizza" >
+          </mat-form-field>
+          <app-error-message [control]="hotelForm.get('phone')"></app-error-message>
+
+          <mat-form-field class="example-full-width m-1">
+            <mat-label>Email Adresi</mat-label>
+            <input  formControlName="email" matInput placeholder="Ex. Pizza" >
+          </mat-form-field>
+          <app-error-message [control]="hotelForm.get('email')"></app-error-message>
+
+          <mat-form-field class="example-full-width m-1">
+            <mat-label>description</mat-label>
+            <input  formControlName="description" matInput placeholder="Ex. Pizza" >
+          </mat-form-field>
+          <app-error-message [control]="hotelForm.get('description')"></app-error-message>
+          <mat-form-field class="example-full-width m-1">
+            <mat-label>Star</mat-label>
+            <input  formControlName="star" matInput placeholder="Ex. Pizza m-1" >
+          </mat-form-field>
+          <app-error-message [control]="hotelForm.get('star')"></app-error-message>
+          <mat-form-field class="example-full-width">
+            <mat-label>imageUrl</mat-label>
+            <input formControlName="imageUrl" matInput placeholder="Ex. Pizza m-1" >
+          </mat-form-field>
+          <app-error-message [control]="hotelForm.get('imageUrl')"></app-error-message>
+          </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>İptal</button>
+  <button [disabled]="!this.hotelForm.valid" (click)="updateMyHotel()" mat-button [mat-dialog-close]="true">Güncelle</button>
+</mat-dialog-actions>
+
+
+
+
+

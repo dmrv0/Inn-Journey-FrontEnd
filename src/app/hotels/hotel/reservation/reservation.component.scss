@@ -1,0 +1,54 @@
+  .total-price {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+ 
+  /* Stil sınıfları */
+.bg-red {
+  background-color: #f8d7da !important; /* Kırmızı arka plan rengi */
+  color: black; /* Yazı rengi */
+}
+
+.bg-yellow {
+  background-color: #fff3cd !important; /* Sarı arka plan rengi */
+  color: black; /* Yazı rengi */
+}
+
+.bg-green {
+  background-color: #d4edda !important; /* Yeşil arka plan rengi */
+  color: black; /* Yazı rengi */
+}
+
+.line-through {
+  text-decoration: line-through; /* Üzerinden çizme */
+}
+
+/* Card Container */
+.card {
+  display: flex;
+  justify-content: center; /* Yatayda ortalar */
+  align-items: center; /* Düşeyde ortalar */
+  max-width: 100%; /* Kart genişliğinin ekranı aşmasını engeller */
+  box-sizing: border-box; /* Padding ve border'ları genişlik hesaplamasına dahil eder */
+}
+
+/* Calendar */
+p-calendar {
+  max-width: 100%; /* Takvimin genişliğini kapsayıcı elementin genişliği ile sınırlayacak */
+  box-sizing: border-box; /* Padding ve border'ları genişlik hesaplamasına dahil eder */
+}
+
+/* Eğer kartın içeriğinin ortalanmasını istiyorsanız */
+.card .p-calendar {
+  width: 100%;
+}
+.errormessage {
+  color: red;
+  font-size: 12px;
+}
+
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";

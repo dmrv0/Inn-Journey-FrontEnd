@@ -1,0 +1,56 @@
+<div class="container mt-4">
+  
+  <h2 class="mb-4">Yapılan Rezervasyonlar</h2>
+  <div class="table-responsive">
+
+    <!-- Oda Tablosu -->
+<ng-template #no_Reservation>
+  <div class="alert alert-warning text-center">
+    <i class="fas fa-bed" style="font-size: 2rem;"></i>
+    <p class="mb-0">Rezervasyon Bulunamadı</p>
+  </div>
+</ng-template>
+
+
+    <table *ngIf="myHotelRezervation && myHotelRezervation.length > 0; else no_Reservation" class="table table-hover table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Kullanıcı</th>
+          <th scope="col">Oda Id</th>
+          <th scope="col">CheckIn</th>
+          <th scope="col">CheckOut</th>
+          <th scope="col">Fiyat (TL)</th>
+          <th scope="col">Ödeme Durumu</th>
+          <th scope="col">Rezervasyon Durumu</th>
+        </tr>
+      </thead>
+      <tbody > 
+        <tr *ngFor="let item of myHotelRezervation; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td><a class="btn btn-info" (click)="getUser(item.userId)" >{{getUsersName(item.userId)}}</a> </td>
+          <td>{{item.roomId}}</td>
+          <td>{{item.checkIn | date: 'shortDate'}}</td>
+          <td>{{item.checkOut | date: 'shortDate'}}</td>
+          <td>{{item.totalPrice | number:'1.0-0'}} ₺</td>
+          <td *ngIf="item.status ==='PC' " class="text-success"> <b>Ödeme Yapıldı✓ </b></td>
+          <td *ngIf="item.status ==='PNC' " class="text-danger"><b> Ödemem Tamamlanmadı × </b></td>
+          <td *ngIf="item.deleted == true" class="text-danger"><b> Rezervasyon İptal </b></td>
+          <td *ngIf="item.deleted == false" class="text-success"><b> Rezervasyon Başarılı </b></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="myHotelRezervation && myHotelRezervation.length > 0" class="card flex justify-content-center">
+
+      <p-paginator
+      (onPageChange)="onPageChance($event)"
+      [first]="page"
+      [rows]="rows"
+      [totalRecords]="totalCount"
+      [rowsPerPageOptions]="[10,20,30]"
+      />
+</div>
+
+

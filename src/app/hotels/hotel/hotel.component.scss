@@ -1,0 +1,140 @@
+.main_grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main_card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  width: 100%;
+  transition: 0.4s;
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.slider-wrapper, .gps-wrapper {
+  flex: 1;
+  height: 380px; /* Sabit yükseklik */
+  border-radius: 2%;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  border-radius: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.slider img {
+  flex: 1 0 100%;
+  scroll-snap-align: start;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.gps-wrapper {
+  border: 1px solid #ccc;
+}
+
+.gps iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.popular__content {
+  padding: 10px;
+}
+
+.main_card_header {
+  padding: 15px;
+}
+
+.hotel-info {
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.hotel-description {
+  margin-bottom: 1rem; /* Açıklama ve adres arasına boşluk ekleyin */
+}
+
+.hotel-address {
+  margin-bottom: 1rem; /* Adres ve diğer içerikler arasında boşluk ekleyin */
+}
+
+.hotel-description p, .hotel-address p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.reservation-btn {
+  padding: 8px 12px;
+  margin: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f0ece6;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reservation-btn:hover {
+  background-color: #e0dcd6;
+}
+
+.star-rating {
+  color: #f39c12; /* Yıldız rengini ayarlayın */
+}
+
+.hotel-title-and-stars {
+  display: flex;
+  align-items: center; /* Yatayda ortalar */
+}
+
+.hotel-title {
+  margin: 0;
+  font-size: 2rem; /* Otel adı için uygun font boyutu */
+  margin-right: 10px; /* Yıldızlar ile otel adı arasındaki boşluk */
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star-rating .icon {
+  margin-left: 4px; /* Yıldızlar arasında boşluk */
+}

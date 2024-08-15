@@ -1,0 +1,40 @@
+<section class="vh-100">
+	<div class="container py-5">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+		  <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+			<div class="card text-white" style="border-radius: 1rem; background-color: rgb(43, 48, 53);">
+			  <div class="card-body p-5 text-center">
+	
+				<form  (ngSubmit)="login()" >
+				<div class=" mt-md-4 pb-5">
+				  <h2 class="fw-bold mb-2 text-uppercase">Giriş Yap</h2>
+	
+				  <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+					  <label for="username" class="form-label">Kullanıcı Adı/Email</label>
+					  <input [(ngModel)]="email" type="text" name="email" class="form-control form-control-lg" placeholder="Kullanıcı Adı/Email"/>
+				  </div>
+
+				  <div data-mdb-input-init class="form-group form-outline form-white mb-4">
+					  <label for="password" class="form-label">Şifre</label>
+					  <input type="password" name="pass" placeholder="Şifre" [(ngModel)]="password" required  class="form-control form-control-lg"/>
+				  </div>
+
+				  <p class="small mb-3 pb-lg-2"><a class="text-white-50" routerLink="/password-reset">Şifreni mi unuttun?</a></p>
+	
+				  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Giriş Yap</button>
+	
+				</div>
+				<div *ngIf="!!errorMessage" class="text-white bg-danger mb-3 border-radius"> {{errorMessage}}</div>
+			</form>
+
+				<div>
+				  <p class="mb-0">Hesabın yok mu? <a routerLink="../register" class="text-white-50 fw-bold">Kayıt Ol!</a></p>
+				</div>
+	
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	
+  </section>

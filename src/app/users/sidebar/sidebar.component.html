@@ -1,0 +1,18 @@
+
+
+<div id="sidebar">
+  <ul class="nav-links">
+    <li [ngClass]="{'active': isActive('/myProfile')}">
+      <a routerLink="/myProfile"><i class="pi pi-calendar"></i><span>Rezervasyonlarım</span></a>
+    </li>
+    <li [ngClass]="{'active': isActive('/myProfile/myPayments')}">
+      <a routerLink="/myProfile/myPayments"><i class="pi pi-address-book"></i><span>Ödemelerim</span></a>
+    </li>
+    <li [ngClass]="{'active': isActive('/myProfile/myComments')}">
+      <a routerLink="/myProfile/myComments"><i class="pi pi-comments"></i><span>Yorumlarım</span></a>
+    </li>
+    <li [ngClass]="{'active': isActive('/myProfile/changeInformation')}">
+      <a routerLink="/myProfile/changeInformation"><i class="pi pi-spin pi-cog"></i><span>Kullanıcı Ayarları</span></a>
+    </li>
+  </ul>
+</div>
